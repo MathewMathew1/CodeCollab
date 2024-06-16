@@ -11,17 +11,21 @@ export class EventEmitter {
     if (!this.events[event]) {
       this.events[event] = [];
     }
-    this.events[event].push(listener);
+
+    this.events[event]!.push(listener);
+    
     return {
       unsubscribe: () => {
-        this.events[event] = this.events[event]!.filter((l) => l !== listener);
+        if(this.events[event]){
+          this.events[event]! = this.events[event]!.filter((l) => l !== listener);
+        }
       },
     };
   }
 
   emit(event: string, data: any) {
     if (this.events[event]) {
-      this.events[event].forEach((listener) => listener(data));
+      this.events[event]!.forEach((listener) => listener(data));
     }
   }
 }
