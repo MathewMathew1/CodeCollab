@@ -14,7 +14,6 @@ import { getFilesPaths, getFoldersWithPaths } from "~/utilis/ProjectPath";
 import { FileInProject, FolderInProject } from "~/types/Project";
 import { EVENTS } from "~/utilis/Events";
 import useArray from "~/hooks/useArray";
-import Button from "./Button";
 import Chat from "./Chat";
 import {
   getExtensionFromFilename,
