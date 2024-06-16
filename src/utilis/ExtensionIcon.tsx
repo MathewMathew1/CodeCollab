@@ -8,7 +8,6 @@ type ExtensionIconProps = {
   fileName: string;
 };
 
-
 const ExtensionIcon: React.FC<ExtensionIconProps> = ({ fileName }) => {
   const extension = fileName.split(".").pop()?.toLowerCase();
 
