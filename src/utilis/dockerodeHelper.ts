@@ -53,5 +53,5 @@ export const imageAndCommandFromExtension = (extension: string) => {
   const mapping = languageMapping[extension];
   return mapping
     ? { command: mapping.command, image: mapping.image }
-    : { command: "unknown", image: "unknown" };
+    : { command: (filename: string) => `unknown`, image: "unknown" };
 };
