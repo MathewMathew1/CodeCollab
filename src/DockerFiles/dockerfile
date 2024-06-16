@@ -1,0 +1,16 @@
+# Use an official Node.js image as a base
+FROM node:latest
+
+# Set the working directory
+WORKDIR /app
+
+# Install TypeScript, ts-node, and nodemon globally
+RUN npm install typescript ts-node nodemon
+
+# Initialize a TypeScript project
+RUN npm init -y && npx tsc --init
+
+
+
+# Copy all files to the container
+COPY . .
