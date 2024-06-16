@@ -9,7 +9,6 @@ const ToastContainer = (): JSX.Element => {
     toastUpdate.removeToastById(index);
   };
 
-  
   return (
     <>
       {toasts.toastsInfos.map((toast: ToastInfo, index: number) => (
