@@ -1,6 +1,6 @@
-import { trpc } from "~/utils/api";
+import { trpc } from "../utils/api";
 import { useState } from "react";
-import { useProject } from "~/pages/project/[id]";
+import { useProject } from "../pages/project/[id]";
 
 const ProjectSettings = ({ visibility }: { visibility: boolean }) => {
   const project = useProject();

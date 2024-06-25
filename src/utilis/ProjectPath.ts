@@ -1,5 +1,5 @@
 import path from "path";
-import { Folder, FolderInProject, File } from "~/types/Project";
+import { Folder, FolderInProject, File } from "../types/Project";
 
 function getFoldersWithPaths(
   folders: Folder[],

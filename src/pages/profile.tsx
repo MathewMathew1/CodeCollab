@@ -1,11 +1,11 @@
 import { signOut, useSession } from "next-auth/react";
 import { ChangeEvent, useEffect, useState } from "react";
-import Button from "~/components/Button";
-import { LoadingSpinner } from "~/components/LoadingSpinner";
-import { trpc } from "~/utils/api";
+import Button from "../components/Button";
+import { LoadingSpinner } from "../components/LoadingSpinner";
+import { trpc } from "../utils/api";
 import { CiEdit } from "react-icons/ci";
 import { MdCancel, MdSaveAs } from "react-icons/md";
-import ProjectPreview from "~/components/ProjectPreview";
+import ProjectPreview from "../components/ProjectPreview";
 import Head from "next/head";
 
 const Profile = () => {

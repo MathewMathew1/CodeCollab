@@ -1,10 +1,10 @@
 import Docker from "dockerode";
-import { FileInProject, FolderInProject } from "~/types/Project";
+import { FileInProject, FolderInProject } from "../../types/Project";
 import { pullCPlus, pullCSharp, pullJava, pullNode, pullNodeTypescript, pullPython, pullZig } from "./dockerpuller";
 import {
   getExtensionFromFilename,
   imageAndCommandFromExtension,
-} from "~/utilis/dockerodeHelper";
+} from "../../utilis/dockerodeHelper";
 
 export async function runInSandbox(
   files: FileInProject[],

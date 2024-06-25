@@ -1,6 +1,5 @@
 import React from "react";
 import { AiFillFile } from "react-icons/ai";
-import { FaPython } from "react-icons/fa";
 import PythonIcon from "./Python.webp"
 import JavaIcon from "./Java.jpg"
 

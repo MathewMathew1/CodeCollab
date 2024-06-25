@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useState } from 'react';
-import { Folder, File } from '~/types/Project';
+import { Folder, File } from '../types/Project';
 
 type ContextMenuContextProps = {
   contextMenuOpen: boolean;

@@ -1,8 +1,8 @@
-import { trpc } from "~/utils/api";
+import { trpc } from "../utils/api";
 import Button from "./Button";
 import { useEffect, useState } from "react";
-import { useProject } from "~/pages/project/[id]";
-import useArray from "~/hooks/useArray";
+import { useProject } from "../pages/project/[id]";
+import useArray from "../hooks/useArray";
 import { FaQuestionCircle } from 'react-icons/fa';
 
 type ChatMessage = {

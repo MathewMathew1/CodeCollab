@@ -1,12 +1,12 @@
 import { useState } from "react"
-import Button from "~/components/Button"
-import ErrorComponent from "~/components/ErrorComponent"
-import Input from "~/components/Input"
-import { stringLengthValidator } from "~/utilis/validators"
-import { trpc } from "~/utils/api";
+import Button from "../../components/Button"
+import ErrorComponent from "../../components/ErrorComponent"
+import Input from "../../components/Input"
+import { stringLengthValidator } from "../../utilis/validators"
+import { trpc } from "../../utils/api";
 import { useRouter } from 'next/router';
-import { useUpdateToast } from "~/contexts/useToast"
-import { severityColors } from "~/types/Toast"
+import { useUpdateToast } from "../../contexts/useToast"
+import { severityColors } from "../../types/Toast"
 
 const ProjectCreator = () => {
     const [title, setTitle] = useState("")

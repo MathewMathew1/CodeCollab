@@ -4,7 +4,7 @@ import { applyWSSHandler } from "@trpc/server/adapters/ws";
 import http from "http";
 import next from "next";
 import { parse } from "url";
-import ws from "ws";
+import { WebSocketServer } from "ws";
 
 const port = parseInt(process.env.PORT || "3000");
 const dev = process.env.NODE_ENV !== "production";
@@ -28,13 +28,28 @@ void app.prepare().then(() => {
     void handle(req, res, parsedUrl);
   });
 
-  const wss = new ws.Server({ server });
+  const wss = new WebSocketServer({
+    port: 3001,
+  });
+
+  wss.on("listening", () => {
+    console.log(`✅ WebSocket Server listening on ws://localhost:${3001}`);
+  });
+  
+  wss.on("connection", (ws) => {
+    console.log(`➕➕ Connection (${wss.clients.size})`);
+    ws.once("close", () => {
+      console.log(`➖➖ Connection (${wss.clients.size})`);
+    });
+  });
+
   const handler = applyWSSHandler({ wss, router: appRouter, createContext });
   console.log({ handler });
 
   process.on("SIGTERM", () => {
     console.log("SIGTERM");
     handler.broadcastReconnectNotification();
+    wss.close();
   });
   server.listen(port);
 

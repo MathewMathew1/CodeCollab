@@ -1,25 +1,25 @@
 import diffMatchPatch from "diff-match-patch";
 import { useRouter } from "next/router";
 import React, { createContext, useContext, useEffect, useState } from "react";
-import Console from "~/components/Console";
-import CodeEditor from "~/components/MonacoEditor";
-import SidebarProjectSolution from "~/components/SidebarProjectSolution";
-import { useProject } from "~/pages/project/[id]";
-import { trpc } from "~/utils/api";
+import Console from "../components/Console";
+import CodeEditor from "../components/MonacoEditor";
+import SidebarProjectSolution from "../components/SidebarProjectSolution";
+import { useProject } from "../pages/project/[id]";
+import { trpc } from "../utils/api";
 import Tab from "./Tab";
 import { editor } from "monaco-editor";
 import { v4 as uuidv4 } from "uuid";
 import { Monaco } from "@monaco-editor/react";
-import { getFilesPaths, getFoldersWithPaths } from "~/utilis/ProjectPath";
-import { FileInProject, FolderInProject } from "~/types/Project";
-import { EVENTS } from "~/utilis/Events";
-import useArray from "~/hooks/useArray";
+import { getFilesPaths, getFoldersWithPaths } from "../utilis/ProjectPath";
+import { FileInProject, FolderInProject } from "../types/Project";
+import { EVENTS } from "../utilis/Events";
+import useArray from "../hooks/useArray";
 import Chat from "./Chat";
 import {
   getExtensionFromFilename,
   getLanguageFromExtension,
-} from "~/utilis/dockerodeHelper";
-import { createCompletionProviderJavascript } from "~/utilis/monacoHelpers";
+} from "../utilis/dockerodeHelper";
+import { createCompletionProviderJavascript } from "../utilis/monacoHelpers";
 import { useSession } from "next-auth/react";
 import ProjectSettings from "./ProjectSettings";
 import ProjectInfo from "./ProjectInfo";

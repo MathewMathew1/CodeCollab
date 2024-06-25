@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
-import { useContextMenu } from "~/contexts/useContextMenu";
-import { useProject } from "~/pages/project/[id]";
-import { File } from "~/types/Project";
-import ExtensionIcon from "~/utilis/ExtensionIcon";
+import { useContextMenu } from "../contexts/useContextMenu";
+import { useProject } from "../pages/project/[id]";
+import { File } from "../types/Project";
+import ExtensionIcon from "../utilis/ExtensionIcon";
 
 type FileInStructureProps = {
     file: File;

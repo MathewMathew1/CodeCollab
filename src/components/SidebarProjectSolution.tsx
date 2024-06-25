@@ -1,8 +1,8 @@
-import { useProject } from "~/pages/project/[id]";
+import { useProject } from "../pages/project/[id]";
 import FileInStructure from "./FileInStructure";
 import FolderInStructure from "./FolderInStructure";
 import ContextMenu from "./ContextMenu";
-import { useContextMenu } from "~/contexts/useContextMenu";
+import { useContextMenu } from "../contexts/useContextMenu";
 import TemporaryFile from "./TemporaryFile";
 import TemporaryFolder from "./TemporaryFolder";
 import DeleteFileModal from "./Modals/DeleteFileModal";

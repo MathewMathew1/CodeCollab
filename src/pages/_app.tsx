@@ -1,12 +1,12 @@
 import { type Session } from "next-auth";
 import { SessionProvider } from "next-auth/react";
 import { type AppType } from "next/app";
-import { trpc } from "~/utils/api";
-import "~/styles/globals.css";
+import { trpc } from "../utils/api";
+import "../styles/globals.css";
 import Head from "next/head";
-import { Navbar } from "~/components/Navbar";
-import ToastProvider from "~/contexts/useToast";
-import ToastContainer from "~/components/ToastContainer";
+import { Navbar } from "../components/Navbar";
+import ToastProvider from "../contexts/useToast";
+import ToastContainer from "../components/ToastContainer";
 
 const MyApp: AppType<{ session: Session | null }> = ({
   Component,

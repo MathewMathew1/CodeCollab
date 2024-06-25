@@ -1,7 +1,7 @@
-import { useProject } from "~/pages/project/[id]";
+import { useProject } from "../../pages/project/[id]";
 import Button from "../Button";
 import Modal from "../Modal";
-import { Folder } from "~/types/Project";
+import { Folder } from "../../types/Project";
 
 const DeleteFolderModal = ({isOpen, handleClose, folder}: {
     isOpen: boolean, 

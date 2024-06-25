@@ -1,5 +1,5 @@
 import  {createContext, useContext, useEffect, useState,} from "react";
-import useArray from "~/hooks/useArray";
+import useArray from "../hooks/useArray";
 import { severityColors } from "../types/Toast";
 
 const SNACKBAR_SCREEN_TIME = 5000

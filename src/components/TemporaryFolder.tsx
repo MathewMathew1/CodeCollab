@@ -1,7 +1,7 @@
 import { useState } from "react";
-import { useContextMenu } from "~/contexts/useContextMenu";
-import { useProject } from "~/pages/project/[id]";
-import ExtensionIcon from "~/utilis/ExtensionIcon";
+import { useContextMenu } from "../contexts/useContextMenu";
+import { useProject } from "../pages/project/[id]";
+import ExtensionIcon from "../utilis/ExtensionIcon";
 
 const TemporaryFolder = ({ stackLevel }: { stackLevel: number }) => {
   const [name, setName] = useState("");

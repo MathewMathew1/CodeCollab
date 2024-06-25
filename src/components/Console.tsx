@@ -1,7 +1,7 @@
-import { trpc } from "~/utils/api";
+import { trpc } from "../utils/api";
 import Button from "./Button";
 import { useState } from "react";
-import { useProject } from "~/pages/project/[id]";
+import { useProject } from "../pages/project/[id]";
 import { FaQuestionCircle } from "react-icons/fa";
 
 const Console = ({visibility}:{visibility: boolean}) => {

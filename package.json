@@ -2,15 +2,21 @@
   "name": "codecollaboration",
   "version": "0.1.0",
   "private": true,
+  "engines": {
+    "node": ">=18.15.0"
+  },
   "scripts": {
-    "build": "next build",
+    "prebuild": "prisma generate && prisma migrate deploy",
+    "build:1-next": "cross-env NODE_ENV=production next build",
+    "build:2-server": "tsc --project tsconfig.server.json",
+    "build": "run-s build:*",
     "db:push": "prisma db push",
-    "dev:wss": "tsx watch src/server/wssDevServer.ts --tsconfig tsconfig.server.json ",
+    "dev:wss": "tsx watch src/server/wssDevServer.ts --tsconfig tsconfig..json ",
     "dev:next": "next dev",
     "dev": "run-p dev:*",
     "postinstall": "prisma generate",
     "lint": "next lint",
-    "start": "next start"
+    "start": "cross-env NODE_ENV=production node dist/server/prodServer.js"
   },
   "dependencies": {
     "@monaco-editor/react": "^4.6.0",
@@ -25,6 +31,7 @@
     "@trpc/server": "^10.37.1",
     "@types/react-icons": "^3.0.0",
     "@vscode/codicons": "^0.0.33",
+    "cross-env": "^7.0.3",
     "devalue": "^4.3.2",
     "diff-match-patch": "^1.0.5",
     "dockerode": "^4.0.2",

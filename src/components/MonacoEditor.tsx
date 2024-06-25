@@ -1,14 +1,14 @@
 import React, { useState, useEffect, useRef, useMemo } from "react";
 import { Editor, Monaco } from "@monaco-editor/react";
-import { trpc } from "~/utils/api";
+import { trpc } from "../utils/api";
 import { useRouter } from "next/router";
 import diffMatchPatch from "diff-match-patch";
 import { editor } from "monaco-editor";
-import { useProject } from "~/pages/project/[id]";
+import { useProject } from "../pages/project/[id]";
 import {
   getExtensionFromFilename,
   getLanguageFromExtension,
-} from "~/utilis/dockerodeHelper";
+} from "../utilis/dockerodeHelper";
 
 const LENGTH_OF_LINE_BREAK = 2;
 

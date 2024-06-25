@@ -1,12 +1,12 @@
 import { useRouter } from "next/router";
 import { createContext, useContext, useMemo, useState } from "react";
-import FileManager from "~/components/FileManager";
-import { LoadingSpinner } from "~/components/LoadingSpinner";
-import { ContextMenuProvider } from "~/contexts/useContextMenu";
-import useArray from "~/hooks/useArray";
-import { Folder, File } from "~/types/Project";
-import { EventEmitter, EventHandler, EventKeys, EVENTS } from "~/utilis/Events";
-import { trpc } from "~/utils/api";
+import FileManager from "../../components/FileManager";
+import { LoadingSpinner } from "../../components/LoadingSpinner";
+import { ContextMenuProvider } from "../../contexts/useContextMenu";
+import useArray from "../../hooks/useArray";
+import { Folder, File } from "../../types/Project";
+import { EventEmitter, EventHandler, EventKeys, EVENTS } from "../../utilis/Events";
+import { trpc } from "../../utils/api";
 
 const eventEmitter = new EventEmitter();
 

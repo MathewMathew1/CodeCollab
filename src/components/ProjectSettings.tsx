@@ -1,8 +1,8 @@
-import { trpc } from "~/utils/api";
+import { trpc } from "../utils/api";
 import { useState } from "react";
-import { useProject } from "~/pages/project/[id]";
-import { useToast, useUpdateToast } from "~/contexts/useToast";
-import { severityColors } from "~/types/Toast";
+import { useProject } from "../pages/project/[id]";
+import { useToast, useUpdateToast } from "../contexts/useToast";
+import { severityColors } from "../types/Toast";
 
 const ProjectInfo = ({ visibility }: { visibility: boolean }) => {
   const project = useProject();

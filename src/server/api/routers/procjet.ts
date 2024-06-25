@@ -6,9 +6,9 @@ import {
   createTRPCRouter,
   protectedProcedure,
   publicProcedure,
-} from "~/server/api/trpc";
+} from "../../api/trpc";
 import { runInSandbox } from "../sandboxManager";
-import { getFilesPaths, getFoldersWithPaths } from "~/utilis/ProjectPath";
+import { getFilesPaths, getFoldersWithPaths } from "../../../utilis/ProjectPath";
 import { EventEmitter } from "events";
 import { observable } from "@trpc/server/observable";
 
@@ -329,6 +329,7 @@ const getProject = async (
     prisma: PrismaClient<Prisma.PrismaClientOptions, never, DefaultArgs>;
   },
 ) => {
+  console.log("here")
   const project = await ctx.prisma.project.findFirst({
     where: { id: projectId },
     include: {
@@ -341,7 +342,7 @@ const getProject = async (
       },
     },
   });
-
+  
   if (!project?.isPrivate) return project;
 
   if (!userId) return null;

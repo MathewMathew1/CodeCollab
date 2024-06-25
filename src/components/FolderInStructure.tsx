@@ -1,8 +1,8 @@
 // FolderInStructure.js
-import { useProject } from "~/pages/project/[id]";
-import { Folder } from "~/types/Project";
+import { useProject } from "../pages/project/[id]";
+import { Folder } from "../types/Project";
 import FileInStructure from "./FileInStructure";
-import { useContextMenu } from "~/contexts/useContextMenu";
+import { useContextMenu } from "../contexts/useContextMenu";
 import TemporaryFile from "./TemporaryFile";
 import {AiFillFolder} from "react-icons/ai"
 import TemporaryFolder from "./TemporaryFolder";

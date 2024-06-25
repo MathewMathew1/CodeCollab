@@ -3,7 +3,7 @@ import { initTRPC } from "@trpc/server";
 import { observable } from "@trpc/server/observable";
 import { z } from "zod";
 import { publicProcedure, protectedProcedure } from "../trpc";
-import { Folder } from "~/types/Project";
+import { Folder } from "../../../types/Project";
 import { Project } from "@prisma/client";
 // create a global event emitter (could be replaced by redis, etc)
 const ee = new EventEmitter();

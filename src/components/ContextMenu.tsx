@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { useContextMenu } from "~/contexts/useContextMenu";
-import { File, Folder } from "~/types/Project";
+import { useContextMenu } from "../contexts/useContextMenu";
+import { File, Folder } from "../types/Project";
 import DeleteFileModal from "./Modals/DeleteFileModal";
-import { useProject } from "~/pages/project/[id]";
+import { useProject } from "../pages/project/[id]";
 
 const ContextMenu = () => {
   const {
