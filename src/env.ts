@@ -1,13 +1,9 @@
 import { createEnv } from "@t3-oss/env-nextjs";
 import { z } from "zod";
 
-console.log({a: process.env.DATABASE_URL})
-console.log({b: process.env.NEXTAUTH_SECRET})
+
 console.log({c: process.env.NEXTAUTH_URL})
-console.log({d: process.env.DISCORD_CLIENT_SECRET})
-console.log({h: process.env.DISCORD_CLIENT_ID})
-console.log({e: process.env.GOOGLE_CLIENT_ID})
-console.log({f: process.env.GOOGLE_CLIENT_SECRET})
+
 export const env = createEnv({
   /**
    * Specify your server-side environment variables schema here. This way you can ensure the app
