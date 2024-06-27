@@ -9,7 +9,7 @@ const __dirname = path.dirname(__filename);
 
 /** @type {import("next").NextConfig} */
 const config = {
-  output: 'standalone',
+  output: process.env.BUILD_STANDALONE === "true" ? "standalone" : undefined,
   reactStrictMode: false,
   
   images: {
