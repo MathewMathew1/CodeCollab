@@ -1,10 +1,11 @@
 import { signIn, signOut, useSession } from "next-auth/react";
 import Head from "next/head";
 import Link from "next/link";
+import { trpc } from "../utils/api";
 
 export default function Home() {
   const { data: session } = useSession();
-
+  const { data: project } = trpc.healthcheck.useQuery()
   return (
     <>
       <Head>

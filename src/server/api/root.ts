@@ -8,7 +8,7 @@ import { folderRouter } from "./routers/folder";
 import { userRouter } from "./routers/user";
 
 export const appRouter = router({
-  healthcheck: publicProcedure.query(() => "yay!"),
+  healthcheck: publicProcedure.query(() => console.log({check: "yay!"})),
   file: fileRouter,
   user: userRouter,
   folder: folderRouter,
