@@ -5,10 +5,11 @@ import http from "http";
 import next from "next";
 import { parse } from "url";
 import { WebSocketServer } from "ws";
-
+import { env } from "../env";
 
 const port = parseInt(process.env.PORT || "3000");
-console.log(port)
+console.log({b: env.GOOGLE_CLIENT_ID})
+console.log({a: env.GOOGLE_CLIENT_SECRET})
 const dev = process.env.NODE_ENV !== "production";
 const app = next({ dev });
 const handle = app.getRequestHandler();
@@ -46,7 +47,7 @@ void app.prepare().then(() => {
   });
 
   const handler = applyWSSHandler({ wss, router: appRouter, createContext });
-  console.log({ handler });
+
 
   process.on("SIGTERM", () => {
     console.log("SIGTERM");
