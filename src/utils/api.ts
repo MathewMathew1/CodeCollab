@@ -11,7 +11,8 @@ import { loggerLink,  TRPCLink } from "@trpc/client";
 
 // ℹ️ Type-only import:
 // https://www.typescriptlang.org/docs/handbook/release-notes/typescript-3-8.html#type-only-imports-and-export
-
+console.log({b: process.env.NEXT_PUBLIC_WS_URL })
+console.log({a: process.env.NEXT_PUBLIC_API_URL})
 function getEndingLink(ctx: NextPageContext | undefined): TRPCLink<AppRouter> {
   const apiUrl = process.env.NEXT_PUBLIC_API_URL ?? `http://localhost:${process.env.PORT ?? 3000}/api/trpc`;
   const wsUrl = process.env.NEXT_PUBLIC_WS_URL ?? "ws://localhost:3001";
