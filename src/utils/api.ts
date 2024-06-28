@@ -15,6 +15,8 @@ import { loggerLink,  TRPCLink } from "@trpc/client";
 function getEndingLink(ctx: NextPageContext | undefined): TRPCLink<AppRouter> {
   const apiUrl = process.env.NEXT_PUBLIC_API_URL ?? `http://localhost:${process.env.PORT ?? 3000}/api/trpc`;
   const wsUrl = process.env.NEXT_PUBLIC_WS_URL ?? "ws://localhost:3001";
+  console.log({apiUrl})
+  console.log({wsUrl})
 
   if (typeof window === "undefined") {
     return httpBatchLink({
