@@ -1,14 +1,11 @@
 import { httpBatchLink } from "@trpc/client/links/httpBatchLink";
-
 import { wsLink, createWSClient } from "@trpc/client/links/wsLink";
 import { createTRPCNext } from "@trpc/next";
 import type { inferProcedureOutput } from "@trpc/server";
 import { NextPageContext } from "next";
-import getConfig from "next/config";
 import type { AppRouter } from "../server/api/root";
 import superjson from "superjson";
-import { uneval } from "devalue";
-import { loggerLink, Operation, splitLink, TRPCLink } from "@trpc/client";
+import { loggerLink,  TRPCLink } from "@trpc/client";
 
 // [...]
 
@@ -16,13 +13,12 @@ import { loggerLink, Operation, splitLink, TRPCLink } from "@trpc/client";
 // https://www.typescriptlang.org/docs/handbook/release-notes/typescript-3-8.html#type-only-imports-and-export
 
 function getEndingLink(ctx: NextPageContext | undefined): TRPCLink<AppRouter> {
+  const apiUrl = process.env.NEXT_PUBLIC_API_URL ?? `http://localhost:${process.env.PORT ?? 3000}/api/trpc`;
+  const wsUrl = process.env.NEXT_PUBLIC_WS_URL ?? "ws://localhost:3001";
+
   if (typeof window === "undefined") {
     return httpBatchLink({
-      /**
-       * @link https://trpc.io/docs/v11/data-transformers
-       */
-
-      url: `http://localhost:${process.env.PORT ?? 3000}/api/trpc`,
+      url: apiUrl,
       headers() {
         if (!ctx?.req?.headers) {
           return {};
@@ -35,26 +31,15 @@ function getEndingLink(ctx: NextPageContext | undefined): TRPCLink<AppRouter> {
       },
     });
   }
+
   const client = createWSClient({
-    url: "ws://localhost:3001",
+    url: wsUrl,
   });
-  console.log({ client });
+  
   return wsLink({
     client,
-    /**
-     * @link https://trpc.io/docs/v11/data-transformers
-     */
   });
 }
-
-const wsLinkFunction = () => {
-  const client = createWSClient({
-    url: `ws://localhost:${process.env.PORT ?? 3001}/api/trpc`,
-  });
-  return wsLink<AppRouter>({
-    client,
-  });
-};
 
 /**
  * A set of strongly-typed React hooks from your `AppRouter` type signature with `createReactQueryHooks`.
