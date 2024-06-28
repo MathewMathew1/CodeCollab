@@ -6,18 +6,21 @@ import { NextPageContext } from "next";
 import type { AppRouter } from "../server/api/root";
 import superjson from "superjson";
 import { loggerLink,  TRPCLink } from "@trpc/client";
-
+import getConfig from "next/config";
+import { env } from "../env";
 // [...]
 
+const { publicRuntimeConfig } = getConfig();
+
+const { APP_URL, WS_URL } = publicRuntimeConfig;
 // ℹ️ Type-only import:
 // https://www.typescriptlang.org/docs/handbook/release-notes/typescript-3-8.html#type-only-imports-and-export
-console.log({b: process.env.NEXT_PUBLIC_WS_URL })
-console.log({a: process.env.NEXT_PUBLIC_API_URL})
+console.log({b: APP_URL })
+console.log(`${WS_URL}`)
 function getEndingLink(ctx: NextPageContext | undefined): TRPCLink<AppRouter> {
-  const apiUrl = process.env.NEXT_PUBLIC_API_URL ?? `http://localhost:${process.env.PORT ?? 3000}/api/trpc`;
-  const wsUrl = process.env.NEXT_PUBLIC_WS_URL ?? "ws://localhost:3001";
-  console.log({apiUrl})
-  console.log({wsUrl})
+  const apiUrl = APP_URL+`/api/trpc`
+  const wsUrl = WS_URL 
+
 
   if (typeof window === "undefined") {
     return httpBatchLink({

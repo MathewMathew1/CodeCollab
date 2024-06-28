@@ -27,7 +27,12 @@ const config = {
   webpack: (config) => {
     config.resolve.alias['~'] = path.resolve(__dirname, 'src/dist');
     return config;
-  }
+  },
+  publicRuntimeConfig: {
+    // Will be available on both server and client
+    APP_URL: process.env.APP_URL,
+    WS_URL: process.env.WS_URL,
+  },
 };
 
 export default config;
