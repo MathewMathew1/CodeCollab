@@ -6,8 +6,10 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const react_1 = require("next-auth/react");
 const head_1 = __importDefault(require("next/head"));
 const link_1 = __importDefault(require("next/link"));
+const api_1 = require("../utils/api");
 function Home() {
     const { data: session } = (0, react_1.useSession)();
+    const { data: project } = api_1.trpc.healthcheck.useQuery();
     return (<>
       <head_1.default>
         <title>Codecollab</title>

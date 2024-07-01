@@ -9,17 +9,20 @@ const wsLink_1 = require("@trpc/client/links/wsLink");
 const next_1 = require("@trpc/next");
 const superjson_1 = __importDefault(require("superjson"));
 const client_1 = require("@trpc/client");
+const config_1 = __importDefault(require("next/config"));
 // [...]
+const { publicRuntimeConfig } = (0, config_1.default)();
+const { APP_URL, WS_URL } = publicRuntimeConfig;
 // ℹ️ Type-only import:
 // https://www.typescriptlang.org/docs/handbook/release-notes/typescript-3-8.html#type-only-imports-and-export
+console.log({ b: APP_URL });
+console.log(`${WS_URL}`);
 function getEndingLink(ctx) {
-    var _a;
+    const apiUrl = APP_URL + `/api/trpc`;
+    const wsUrl = WS_URL;
     if (typeof window === "undefined") {
         return (0, httpBatchLink_1.httpBatchLink)({
-            /**
-             * @link https://trpc.io/docs/v11/data-transformers
-             */
-            url: `http://localhost:${(_a = process.env.PORT) !== null && _a !== void 0 ? _a : 3000}/api/trpc`,
+            url: apiUrl,
             headers() {
                 var _a;
                 if (!((_a = ctx === null || ctx === void 0 ? void 0 : ctx.req) === null || _a === void 0 ? void 0 : _a.headers)) {
@@ -34,25 +37,12 @@ function getEndingLink(ctx) {
         });
     }
     const client = (0, wsLink_1.createWSClient)({
-        url: "ws://localhost:3001",
+        url: wsUrl,
     });
-    console.log({ client });
     return (0, wsLink_1.wsLink)({
         client,
-        /**
-         * @link https://trpc.io/docs/v11/data-transformers
-         */
     });
 }
-const wsLinkFunction = () => {
-    var _a;
-    const client = (0, wsLink_1.createWSClient)({
-        url: `ws://localhost:${(_a = process.env.PORT) !== null && _a !== void 0 ? _a : 3001}/api/trpc`,
-    });
-    return (0, wsLink_1.wsLink)({
-        client,
-    });
-};
 /**
  * A set of strongly-typed React hooks from your `AppRouter` type signature with `createReactQueryHooks`.
  * @link https://trpc.io/docs/react#3-create-trpc-hooks

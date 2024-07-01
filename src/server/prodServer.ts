@@ -8,7 +8,7 @@ import { WebSocketServer } from "ws";
 import { env } from "../env";
 
 const port = parseInt(process.env.PORT || "3000");
-console.log({b: env.GOOGLE_CLIENT_ID})
+console.log({port: port})
 console.log({a: env.GOOGLE_CLIENT_SECRET})
 const dev = process.env.NODE_ENV !== "production";
 const app = next({ dev });
@@ -26,13 +26,15 @@ void app.prepare().then(() => {
       return;
     }
     // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+    console.log({c: req.url})
     const parsedUrl = parse(req.url!, true);
 
     void handle(req, res, parsedUrl);
   });
 
+  const wssPort = process.env.WS_PORT ? parseInt(process.env.WS_PORT) : 3001;
   const wss = new WebSocketServer({
-    port: 3001,
+    port: wssPort,
   });
 
   wss.on("listening", () => {

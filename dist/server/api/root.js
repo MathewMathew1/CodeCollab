@@ -10,7 +10,7 @@ const procjet_1 = require("./routers/procjet");
 const folder_1 = require("./routers/folder");
 const user_1 = require("./routers/user");
 exports.appRouter = (0, trpc_1.router)({
-    healthcheck: trpc_1.publicProcedure.query(() => "yay!"),
+    healthcheck: trpc_1.publicProcedure.query(() => console.log({ check: "yay!" })),
     file: file_1.fileRouter,
     user: user_1.userRouter,
     folder: folder_1.folderRouter,

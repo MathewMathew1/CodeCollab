@@ -10,7 +10,10 @@ const http_1 = __importDefault(require("http"));
 const next_1 = __importDefault(require("next"));
 const url_1 = require("url");
 const ws_2 = require("ws");
+const env_1 = require("../env");
 const port = parseInt(process.env.PORT || "3000");
+console.log({ b: env_1.env.GOOGLE_CLIENT_ID });
+console.log({ a: env_1.env.GOOGLE_CLIENT_SECRET });
 const dev = process.env.NODE_ENV !== "production";
 const app = (0, next_1.default)({ dev });
 const handle = app.getRequestHandler();
@@ -27,11 +30,13 @@ void app.prepare().then(() => {
             return;
         }
         // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+        console.log({ c: req.url });
         const parsedUrl = (0, url_1.parse)(req.url, true);
         void handle(req, res, parsedUrl);
     });
+    const wssPort = process.env.WS_PORT ? parseInt(process.env.WS_PORT) : 3001;
     const wss = new ws_2.WebSocketServer({
-        port: 3001,
+        port: wssPort,
     });
     wss.on("listening", () => {
         console.log(`✅ WebSocket Server listening on ws://localhost:${3001}`);
@@ -43,7 +48,6 @@ void app.prepare().then(() => {
         });
     });
     const handler = (0, ws_1.applyWSSHandler)({ wss, router: root_1.appRouter, createContext: context_1.createContext });
-    console.log({ handler });
     process.on("SIGTERM", () => {
         console.log("SIGTERM");
         handler.broadcastReconnectNotification();

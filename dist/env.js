@@ -3,13 +3,6 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.env = void 0;
 const env_nextjs_1 = require("@t3-oss/env-nextjs");
 const zod_1 = require("zod");
-console.log({ a: process.env.DATABASE_URL });
-console.log({ b: process.env.NEXTAUTH_SECRET });
-console.log({ c: process.env.NEXTAUTH_URL });
-console.log({ d: process.env.DISCORD_CLIENT_SECRET });
-console.log({ h: process.env.DISCORD_CLIENT_ID });
-console.log({ e: process.env.GOOGLE_CLIENT_ID });
-console.log({ f: process.env.GOOGLE_CLIENT_SECRET });
 exports.env = (0, env_nextjs_1.createEnv)({
     /**
      * Specify your server-side environment variables schema here. This way you can ensure the app
@@ -36,7 +29,9 @@ exports.env = (0, env_nextjs_1.createEnv)({
         DISCORD_CLIENT_ID: zod_1.z.string(),
         DISCORD_CLIENT_SECRET: zod_1.z.string(),
         GOOGLE_CLIENT_ID: zod_1.z.string(),
-        GOOGLE_CLIENT_SECRET: zod_1.z.string()
+        GOOGLE_CLIENT_SECRET: zod_1.z.string(),
+        APP_URL: zod_1.z.string(),
+        WS_URL: zod_1.z.string()
     },
     /**
      * Specify your client-side environment variables schema here. This way you can ensure the app
@@ -59,6 +54,8 @@ exports.env = (0, env_nextjs_1.createEnv)({
         DISCORD_CLIENT_SECRET: process.env.DISCORD_CLIENT_SECRET,
         GOOGLE_CLIENT_ID: process.env.GOOGLE_CLIENT_ID,
         GOOGLE_CLIENT_SECRET: process.env.GOOGLE_CLIENT_SECRET,
+        APP_URL: process.env.APP_URL,
+        WS_URL: process.env.WS_URL,
     },
     /**
      * Run `build` or `dev` with `SKIP_ENV_VALIDATION` to skip env validation. This is especially

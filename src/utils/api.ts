@@ -7,7 +7,7 @@ import type { AppRouter } from "../server/api/root";
 import superjson from "superjson";
 import { loggerLink,  TRPCLink } from "@trpc/client";
 import getConfig from "next/config";
-import { env } from "../env";
+
 // [...]
 
 const { publicRuntimeConfig } = getConfig();
