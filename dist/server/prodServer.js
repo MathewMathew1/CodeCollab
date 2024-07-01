@@ -12,8 +12,14 @@ const url_1 = require("url");
 const ws_2 = require("ws");
 const env_1 = require("../env");
 const port = parseInt(process.env.PORT || "3000");
-console.log({ b: env_1.env.GOOGLE_CLIENT_ID });
-console.log({ a: env_1.env.GOOGLE_CLIENT_SECRET });
+console.log('Environment Variables:', {
+    GOOGLE_CLIENT_SECRET: env_1.env.GOOGLE_CLIENT_SECRET,
+    NODE_ENV: process.env.NODE_ENV,
+    PORT: process.env.PORT,
+    WS_PORT: process.env.WS_PORT,
+    NEXT_PUBLIC_API_URL: process.env.NEXT_PUBLIC_API_URL,
+    NEXT_PUBLIC_WS_URL: process.env.NEXT_PUBLIC_WS_URL,
+});
 const dev = process.env.NODE_ENV !== "production";
 const app = (0, next_1.default)({ dev });
 const handle = app.getRequestHandler();
@@ -39,7 +45,7 @@ void app.prepare().then(() => {
         port: wssPort,
     });
     wss.on("listening", () => {
-        console.log(`✅ WebSocket Server listening on ws://localhost:${3001}`);
+        console.log(`✅ WebSocket Server listening on ws://localhost:${wssPort}`);
     });
     wss.on("connection", (ws) => {
         console.log(`➕➕ Connection (${wss.clients.size})`);

@@ -8,8 +8,14 @@ import { WebSocketServer } from "ws";
 import { env } from "../env";
 
 const port = parseInt(process.env.PORT || "3000");
-console.log({port: port})
-console.log({a: env.GOOGLE_CLIENT_SECRET})
+console.log('Environment Variables:', {
+  GOOGLE_CLIENT_SECRET: env.GOOGLE_CLIENT_SECRET,
+  NODE_ENV: process.env.NODE_ENV,
+  PORT: process.env.PORT,
+  WS_PORT: process.env.WS_PORT,
+  NEXT_PUBLIC_API_URL: process.env.APP_URL,
+  NEXT_PUBLIC_WS_URL: process.env.WS_URL,
+});
 const dev = process.env.NODE_ENV !== "production";
 const app = next({ dev });
 const handle = app.getRequestHandler();
@@ -38,7 +44,7 @@ void app.prepare().then(() => {
   });
 
   wss.on("listening", () => {
-    console.log(`✅ WebSocket Server listening on ws://localhost:${3001}`);
+    console.log(`✅ WebSocket Server listening on ws://localhost:${wssPort}`);
   });
   
   wss.on("connection", (ws) => {
