@@ -6,6 +6,8 @@ import next from "next";
 import { parse } from "url";
 import { WebSocketServer } from "ws";
 import { env } from "../env";
+import Docker from "dockerode";
+import { pullCPlus, pullCSharp, pullJava, pullNode, pullNodeTypescript, pullPython } from "./api/dockerpuller";
 
 const port = parseInt(process.env.PORT || "3000");
 console.log('Environment Variables:', {
@@ -21,6 +23,14 @@ const app = next({ dev });
 const handle = app.getRequestHandler();
 
 void app.prepare().then(() => {
+  const docker = new Docker();
+  pullCSharp(docker)
+  pullJava(docker)
+  pullNode(docker)
+  pullCPlus(docker)
+  pullPython(docker)
+  pullNodeTypescript(docker)
+
   const server = http.createServer((req, res) => {
     const proto = req.headers["x-forwarded-proto"];
     if (proto && proto === "http") {
@@ -32,7 +42,7 @@ void app.prepare().then(() => {
       return;
     }
     // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-    console.log({c: req.url})
+
     const parsedUrl = parse(req.url!, true);
 
     void handle(req, res, parsedUrl);
@@ -40,12 +50,6 @@ void app.prepare().then(() => {
 
   const wss = new WebSocketServer({ server, path: "/ws" });
   
-  wss.on("connection", (ws) => {
-    console.log(`➕➕ Connection (${wss.clients.size})`);
-    ws.once("close", () => {
-      console.log(`➖➖ Connection (${wss.clients.size})`);
-    });
-  });
 
   const handler = applyWSSHandler({ wss, router: appRouter, createContext });
 

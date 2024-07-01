@@ -1,6 +1,6 @@
 import Docker from "dockerode";
 import { FileInProject, FolderInProject } from "../../types/Project";
-import { pullCPlus, pullCSharp, pullJava, pullNode, pullNodeTypescript, pullPython, pullZig } from "./dockerpuller";
+
 import {
   getExtensionFromFilename,
   imageAndCommandFromExtension,
