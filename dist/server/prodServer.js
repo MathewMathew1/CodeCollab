@@ -17,8 +17,8 @@ console.log('Environment Variables:', {
     NODE_ENV: process.env.NODE_ENV,
     PORT: process.env.PORT,
     WS_PORT: process.env.WS_PORT,
-    NEXT_PUBLIC_API_URL: process.env.NEXT_PUBLIC_API_URL,
-    NEXT_PUBLIC_WS_URL: process.env.NEXT_PUBLIC_WS_URL,
+    NEXT_PUBLIC_API_URL: process.env.APP_URL,
+    NEXT_PUBLIC_WS_URL: process.env.WS_URL,
 });
 const dev = process.env.NODE_ENV !== "production";
 const app = (0, next_1.default)({ dev });
@@ -41,9 +41,7 @@ void app.prepare().then(() => {
         void handle(req, res, parsedUrl);
     });
     const wssPort = process.env.WS_PORT ? parseInt(process.env.WS_PORT) : 3001;
-    const wss = new ws_2.WebSocketServer({
-        port: wssPort,
-    });
+    const wss = new ws_2.WebSocketServer({ server });
     wss.on("listening", () => {
         console.log(`✅ WebSocket Server listening on ws://localhost:${wssPort}`);
     });

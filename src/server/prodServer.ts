@@ -39,9 +39,7 @@ void app.prepare().then(() => {
   });
 
   const wssPort = process.env.WS_PORT ? parseInt(process.env.WS_PORT) : 3001;
-  const wss = new WebSocketServer({
-    port: wssPort,
-  });
+  const wss = new WebSocketServer({ server });
 
   wss.on("listening", () => {
     console.log(`✅ WebSocket Server listening on ws://localhost:${wssPort}`);
