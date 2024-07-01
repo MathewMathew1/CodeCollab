@@ -38,12 +38,7 @@ void app.prepare().then(() => {
     void handle(req, res, parsedUrl);
   });
 
-  const wssPort = process.env.WS_PORT ? parseInt(process.env.WS_PORT) : 3001;
-  const wss = new WebSocketServer({ server });
-
-  wss.on("listening", () => {
-    console.log(`✅ WebSocket Server listening on ws://localhost:${wssPort}`);
-  });
+  const wss = new WebSocketServer({ server, path: "/ws" });
   
   wss.on("connection", (ws) => {
     console.log(`➕➕ Connection (${wss.clients.size})`);
